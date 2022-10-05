@@ -1,17 +1,20 @@
 let saveButton = $(".saveBtn");
 let signUpHour = $(".hour");
-let currentHour = $(moment().format("H"));
+let currentHour = moment().format("H");
+let textInputClass = $("textarea");
+console.log(currentHour);
+console.log($("#9").val());
 
 
 function yolo() {
      for (x = 9; x < 18; x++) {
-      if (x < 14) {
+      if (x < currentHour) {
         $("#" + x).addClass("past");
       }
-      if (x == 14) {
+      if (x == currentHour) {
         $("#" + x).addClass("present");
       }
-      if (x > 14) {
+      if (x > currentHour) {
         $("#" + x).addClass("future");
       }
      }
@@ -20,10 +23,34 @@ yolo();
 
 
 
- 
+saveButton.on("click", function(){
+    for (x = 9; x < 18; x++){
+      var agendaItem = [];
+      agendaItem = $("#" + x).val().trim();
+      localStorage.setItem("#" + x, JSON.stringify(agendaItem));
 
+      console.log(agendaItem)
+      
+    }
+ });
+
+ let populatePlanner = function(event){
+       for (x = 9; x < 18; x++){
+     let frisbee = localStorage.getItem("#" + x) || [];
+     let target = $("#" + x)
+     $(target).text(frisbee);
+ }
+ }
+
+ populatePlanner();
+ 
+// let displayTime = function () {
+//     let currentDay = moment().format("[TODAY IS], dddd MMMM do YYYY:h:mm:ss a")
+//     $("#today").text(currentDay)
+// }
+// setInterval(displayTime, 1000);
    
-$("#currentDay").text(moment().format("MM DD YYYY, h a"));
+$("#currentDay").text(moment().format("MM DD YYYY"));
 
 
 // TIMEBLOCKS LISTED
