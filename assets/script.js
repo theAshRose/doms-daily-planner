@@ -26,7 +26,9 @@ yolo();
 saveButton.on("click", function(){
     for (x = 9; x < 18; x++){
       var agendaItem = [];
-      agendaItem = $("#" + x).val().trim();
+      agendaItem = $("#" + x).val();
+      // .val()
+      // .trim()
       localStorage.setItem("#" + x, JSON.stringify(agendaItem));
 
       console.log(agendaItem)
