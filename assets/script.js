@@ -13,7 +13,7 @@ function yolo() { //this function measures the current text block against curren
   }
 };
 yolo();
-$(".saveBtn").on("click", function() { //simply selecting all buttons through array, measuring them like we did above, then saving them to a key that matches their ID
+$(".saveBtn").on("click", function(event) { //simply selecting all buttons through array, measuring them like we did above, then saving them to a key that matches their ID
   for (x = 9; x < 18; x++) {
     var agendaItem = [];
     agendaItem = $("#" + x).val();
@@ -29,7 +29,3 @@ let populatePlanner = function () { //this pulls the data by key and populates t
 }
 populatePlanner(); //this makes sure our panner is up to date, the function above
 $("#currentDay").text(moment().format("MMMM Do YYYY")); //displays current day
-
-// console.log(($(event.target).parent().siblings(1).val('' + x)));
-// if (($(this).siblings().eq(2).attr("id")) == $("#" + x)) {
-  
